@@ -1,0 +1,17 @@
+#app1 {
+  width: 50vw;
+  height: 50vh;
+  border: 1px solid red;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:before, :after {
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=index.2d7055af.css.map */
