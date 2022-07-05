@@ -540,15 +540,17 @@ var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 const $tabBar = _jqueryDefault.default('#app2 .tab-bar');
 const $tabContent = _jqueryDefault.default('#app2 .tab-content');
+const localKey = 'app2.index';
+const index = localStorage.getItem(localKey) || 0;
 //事件委托：监听父元素
 $tabBar.on('click', 'li', (e)=>{
     const $li = _jqueryDefault.default(e.currentTarget);
     $li.addClass('selected').siblings().removeClass('selected');
-    const index = $li.index();
-    console.log(index);
-    $tabContent.children().eq(index).addClass('active').siblings().removeClass('active');
+    const index1 = $li.index();
+    localStorage.setItem(localKey, index1);
+    $tabContent.children().eq(index1).addClass('active').siblings().removeClass('active');
 });
-$tabBar.children().eq(0).trigger('click');
+$tabBar.children().eq(index).trigger('click');
 
 },{"jquery":"hgMhh","@parcel/transformer-js/src/esmodule-helpers.js":"dXLZq","./app2.css":"8RnuD"}],"hgMhh":[function(require,module,exports) {
 /*!
@@ -7361,8 +7363,17 @@ var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 var _app3Css = require("./app3.css");
 const $square = _jqueryDefault.default('#app3 .square');
+const localKey = 'app3.active';
+const active = localStorage.getItem(localKey) === 'yes';
+$square.toggleClass('active', active);
 $square.on('click', ()=>{
-    $square.toggleClass('active');
+    if ($square.hasClass('active')) {
+        $square.removeClass('active');
+        localStorage.setItem(localKey, 'no');
+    } else {
+        $square.addClass('active');
+        localStorage.setItem(localKey, 'yes');
+    }
 });
 
 },{"./app3.css":"iOgrn","jquery":"hgMhh","@parcel/transformer-js/src/esmodule-helpers.js":"dXLZq"}],"iOgrn":[function() {},{}],"6ZENx":[function(require,module,exports) {
@@ -7370,7 +7381,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jquery = require("jquery");
 var _jqueryDefault = parcelHelpers.interopDefault(_jquery);
 var _app4Css = require("./app4.css");
-const $circle = _jqueryDefault.default('#app4 .circle');
+const $circle = _jqueryDefault.default('#app4'.circle);
 $circle.on('mouseenter', ()=>{
     $circle.addClass('active');
 }).on('mouseleave', ()=>{

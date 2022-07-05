@@ -55,11 +55,11 @@ body > .page > section {
 }
 
 #app3 > .square {
-  width: 15vw;
-  height: 15vw;
+  width: 5vw;
+  height: 5vw;
   border: 1px solid gray;
-  margin-top: 10vw;
-  margin-left: 10vw;
+  margin-top: 5vw;
+  margin-left: 5vw;
   transition: transform 1s;
 }
 
